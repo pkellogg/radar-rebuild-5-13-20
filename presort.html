@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale= 1">
+  <title>RADAR</title>
+  <!--IMPORTANT jQuery must come first before bootstrap-->
+
+<!--jquery-->
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>-->
+
+<!--needed on this screen only for drag and drop-->
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!--jquery ui-->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+
+<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">-->
+
+ <!--jquery datatables-->
+<!--<script src="http://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.3/css/jquery.dataTables.css" />-->
+
+<!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+
+<!--fedex web components-->   
+<script src="faar-search.js"></script>
+<script src="fx-dropdownmenu.js"></script>
+<script src="fx-listbox.js"></script>
+<script src="fx-markup.js"></script>
+<script src="radar-scales.js"></script>
+<script src="radar-flights.js"></script>
+<script src="radar-flightsxxx.js"></script>
+<script src="radar-jobs.js"></script>
+<script src="date-widget.comp.js"></script>
+<script src="radar-flightspre.js"></script>
+<script src="radar-leaderboard.js"></script>
+
+<!--from faar-stationaddworkgroup.html-->
+<script src="faar-headersearch.js"></script>
+<script src="fx-dropdownmenu.js"></script>
+<script src="faar-simplelistbox.js"></script>
+<script src="fx-markup.js"></script>
+<script src="faar-stationtable.js"></script>
+<script src="fx-utilitybutton.js"></script>
+<script src="faar-addworkgroup.js"></script>
+<script src="fx-secondarybutton.js"></script>
+<script src="faar-listbox.js"></script>
+<script src="fx-accordion-item.js"></script>
+<script src="fx-accordion-item.js"></script>
+
+<!--fr stands for fraction unit, a unit of measuremnt to define a fractionof the available container space.
+auto-fit creates columns with as many columns that can fit in the container. 
+Note: yoou need height on wrapper to display schedule people right-->
+
+<style>
+/*global scope custom css*/
+
+	html				 
+
+	body 				{
+						font-family:roboto;
+						--greenbackground: green;
+						--redbackground: red;
+
+						--iphonemenutext: 16px;
+						--iphonelargetext:20px;
+						--iphonemediumtext :18px;
+						--iphonesmalltext : 16px;
+	 
+						--ipadmenutext: 22px;
+						--ipadlargetext:26px;
+						--padmediumtext : 22px;
+						--padsmalltext : 18px;
+	 
+						--notebookmenutext: 28px;
+						--desktopmenutext: 34px;
+	 
+						--fedexitalic: italic;
+	 
+						--fedexpurple: #4D148C;"
+						--fedexdarkgray: rgb(70 70 70);
+						--fedexsilver: silver;
+						}
+	 
+.wrapper 				{
+						display:grid;
+						grid-gap: 0px;
+						grid-template-rows:  80px 60px 10px 10px 10px 80px 80px 80px 80px 80px 80px 150px;
+						background-color:white;
+						color: #444;
+						width:768px;
+						}
+						
+.header 			    {
+						grid-column:1/span 2 ;
+						grid-row:1;
+						font-weight:bold; 
+						background-color : #4D148C; 
+						color :  white ; 
+						font-family: "roboto";
+						 
+						width:768px
+						}
+	
+	fx-dropdownmenu		{
+						grid-column:1/span 2;
+						grid-row: 2;
+						font-size: var(--iphonemenutext);
+						padding-left: 60px;
+						}
+	
+	.flightsshown		{
+						grid-column:1/span 2;
+						grid-row:3;  
+						}
+
+	.flightsshowninspect
+						{
+						grid-column:1/span 2;
+						grid-row:4;  
+						}
+						
+						
+	.flightsshownleaderboard
+						{
+						grid-column:1/span 2;
+						grid-row:4;  
+						}
+						
+						
+	#jobasignments 
+						{
+						grid-column:1/span 2;
+						grid-row:5;
+						}
+	
+	.content1 			{
+						grid-column : 1;
+						grid-row : 6;
+						}
+	
+	.content2 			
+						{
+						grid-column: 2;
+						grid-row : 6;
+						}
+	
+	.content3 
+						{
+						grid-column : 1;
+						grid-row : 7;
+						}
+	
+	.content4 			{
+						grid-column: 2;
+						grid-row : 7;
+						}
+	
+	.content5 			{
+						grid-column : 1;
+						grid-row : 8;
+						}
+	
+	.content6 
+						{
+						grid-column: 2;
+						grid-row : 8;
+						}
+	
+	.content7 
+						{
+						grid-column : 1;
+						grid-row : 9;
+						}
+	
+	.content8 
+						{
+						grid-column : 2;
+						grid-row : 9;
+						}
+	
+ 
+	.content9 			
+						{
+						grid-column : 1;
+						grid-row : 10;
+						}
+	
+	.content10 
+						{
+						grid-column: 2;
+						grid-row : 10;
+						}
+	
+	.content11 
+						{
+						grid-column : 1;
+						grid-row : 11;
+						}
+	
+	.content12 
+						{
+						grid-column: 2;
+						grid-row : 11;
+						}
+
+	.outboundflights 
+						{
+						grid-column:1/span 2;
+						grid-row:12;
+						}
+
+	#clock 
+						{
+						font-family: Arial;
+						font-size: 18px;
+						text-align: center;
+						color:white;
+						}					
+
+ 
+
+	radar-scales::part(banner) {background-color: var(--fedexpurple);color:white;}
+
+ 
+	
+	 
+	
+	 
+	
+	#presort			{
+						 padding-right:15px;padding-left:0px;color:var(--fedexpurple);
+						}
+
+	#sort				{
+						padding-right:20px;
+						color:var(--fedexsilver);
+						} 
+
+	#live				{
+						padding-right:20px;
+						color:var(--fedexsilver);
+						}
+
+	#notes				{
+						 
+						color:var(--fedexsilver);
+						}
+	
+	.xlargefont			{
+						font-size:32px;
+						}
+	
+						
+
+	.largefont 			{
+						font-size: 26px;
+						color:black; 
+						}
+	 
+	.mediumfont 		{
+						font-size: 24px;
+						}
+	 
+	.smallfont 			{
+						font-size: 16px;
+						}
+	
+	.italic 			{
+						font-style: var(--fedexitalic);
+						}
+	
+	.purple 			{
+						color: var(--fedexpurple);
+						}
+	
+	.silver 			{
+						color: var(--fedexsilver);
+						}
+	 
+	body 				{
+						background-color:white;
+						}
+
+						/*0 is top and bottom, auto is left and rigth to fill the container equally*/				
+	.outboundflights	{
+						margin-left:25px;
+						margin-right:40px;
+						}	
+ }
+
+</style>
+
+<!--display window/viewport dimensions-->
+<script>
+function myFunction() {
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+  alert( "Width: " + w + "<br>Height: " + h);
+}
+</script>
+
+<script>
+function startTime() {
+  offset = 8;
+  var today = new Date();
+  var h = today.getUTCHours();
+  var m = today.getUTCMinutes();
+  var s = today.getUTCSeconds();
+  h = h + offset;
+  if (h > 24) {
+    h = h - 24;
+  }
+  if (h < 0) {
+    h = h + 24;
+  }
+  h = checkTime(h);
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+  var t = setTimeout(function() {
+    startTime()
+  }, 500);
+}
+
+function checkTime(i) {
+  if (i < 10) {
+    i = "0" + i
+  };
+  return i;
+}
+
+startTime()
+</script>
+
+</head>
+
+	<body>
+	 
+		<div class = "wrapper" >
+			 
+			 <button onclick="myFunction()" style = "position:absolute;top:850px;left:0px;">Try it</button>  
+		
+			<div class="header xlargefont" style = "position:relative;">
+				<fx-markup class = "header" style="font-weight:bold;" width = 768 height = 80 c = #4D148C textcolor = "white"  family = "roboto"><div slot = "element-name" style = "text-align:center;padding-top:20px;font-family:roboto;">RADAR Outbound - PDX </div>
+				</fx-markup >
+				<date-widget style = "position:absolute;top:0px;right:0px;"></date-widget>
+			</div>
+			
+			<fx-dropdownmenu   orientation = left c = white  size = 22  style = "border-bottom: solid 3px silver;">
+				<a slot = "drop-text1" style = "color:#4D148C;font-weight:bold;margin-left:40px;text-decoration:none;" href = "presort.html" >PRE-SORT</a>
+
+				<a slot = "drop-text2" href = "sort.html" style = "color:silver;font-weight:bold;margin-left:60px;color:silver;text-decoration:none;" href = "sort.html">SORT</a>
+
+				<a slot = "drop-text3" style = "color:silver;font-weight:bold;margin-left:60px;text-decoration:none;" href = "live.html">LIVE VIEWS</a>
+
+				<a slot = "drop-text4" style = "color:silver;font-weight:bold;margin-left:60px;color:silver;text-decoration:none;" href = "notes.html">MY NOTES</a>	
+				link1 = "preSort.html"
+				link2 = "sort.html"
+				link3 = "live.html"
+				link4 = "notes.html" 
+			</fx-dropdownmenu>
+			 
+	 
+	<!--this is the overlapping box.  Its not an html page but rather the .js.  Its got be 
+	at the end here with a negaative setting in the grid definiation.  Go figure!-->
+	<div class="flightsshown" style = "z-index:1000;width:100%;" > 
+		<div id = "myflights" style = "display:none;">
+			<radar-flightsxxx ></radar-flightsxxx >
+		</div>
+	</div>
+	
+	
+
+	<div class="flightsshowninspect" style = "z-index:1000;margin-top: -25px;" > 
+		<div id = "myinspection" style = "display:none;">
+			<radar-scales></radar-scales>
+		</div>
+	</div>
+	
+	<div class="flightsshownleaderboard" style = "z-index:1000;margin-top: -25px;" > 
+		<div id = "leaderboard" style = "display:none;">
+			<radar-leaderboard></radar-leaderboard>
+		</div>
+	</div>
+ 
+
+	<div class="content1">
+		<fx-markup  style="font-weight:bold;" family = "roboto"><div  slot = "element-name" style = "text-align:center;color:var(--fedexpurple);"><span class = "largefont" >Expected Volume</span><br /><span class = "mediumfont">16,300</span></div>
+		</fx-markup>
+	</div>
+
+	<div class="content2">
+		<fx-markup  style="font-weight:bold;"  family = "roboto">
+			<div slot = "element-name" style = "text-align:center;"><span class = "largefont">Sort Starts At</span><br /><span class = "mediumfont">18:05</span>
+			<br />
+			<!--<span class = "smallfont" style = "display:block;">(finalized)</span>-->
+			</div>
+		</fx-markup>
+	</div>
+
+	<div class="content3"  >
+		<fx-markup  style="font-weight:bold;" family = "roboto"><div slot = "element-name" style = "text-align:center;"><span class = "largefont">Bypass Cans</span><br /><span class = "mediumfont">6</span><span class = "smallfont italic silver" style = "padding-left:10px;">4 Top / 2 Lower</span></div>
+		</fx-markup>
+	</div>
+
+	<div class="content4">
+		<fx-markup  style="font-weight:bold;"  family = "roboto">
+			<div  slot = "element-name" style = "text-align:center;font-family:roboto;" >
+				<a class = "purple smallfont" style ="text-decoration:underline;cursor:pointer;"  href = "inspection.html">SCALE INSPECTION</a>&nbsp;&nbsp;&nbsp;<img src = "scale.PNG" style = "height:35px;" /></div>
+		</fx-markup>
+	</div>
+
+	<div class="content5">
+		<fx-markup  style="font-weight:bold;"  family = "roboto">
+			<div slot = "element-name" style = "text-align:center;"><span class = "largefont">Haz Volume</span><br /><span class = "mediumfont">22</span><img src = "search.PNG" style = "padding-left:15px;height:25px"/></div>
+		</fx-markup>
+	</div>
+
+	<div class="content6">
+		<fx-markup   family = "roboto">
+			<div slot = "element-name" style = "text-align:center;">
+			<span class = "largefont" style = "font-weight:bold;text-align:center;">Scheduled People</span><br /><span class = "mediumfont" style = "font-weight:bold;">14/</span><span class = "mediumfont" style = "font-weight:bold;">14</span>&nbsp;&nbsp;&nbsp;<img src = "pencil.PNG"   style = "height:25px;" onclick="ddd = document.getElementById('jobasignments');ddd.style.display = 'block';" /></span>
+			</div>
+		</fx-markup>
+	</div> 
+
+	<div class="content7">
+		<fx-markup  style="font-weight:bold;" family = "roboto"><div slot = "element-name" style = "text-align:center;"><span class = "largefont">Hwt Volume</span><br /><span class = "mediumfont">30</span><img src = "search.PNG" style = "padding-left:15px;height:25px;"/></div>
+		</fx-markup>
+	</div>
+	
+	<div class="content8" style="margin-top:20px;font-weight:bold;border-left:solid var(--fedexpurple) 1px;border-right:solid var(--fedexpurple) 1px;margin-right:80px;margin-left:80px;padding-top:20px;position:relative;">
+		
+		<span style = "position:absolute;left:-1px;top:-15px;font-size:6px;color:white;background-color:var(--fedexpurple);width:101%;font-weight:normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;previous sort</span>
+	
+		<fx-markup     family = "roboto">
+			<div slot = "element-name" style = "text-align:center;">
+				<span class = "largefont">ULD Density</span>
+				<br />
+				<span class = "mediumfont">87.6%</span>
+			</div>
+		</fx-markup>
+	</div>
+ 
+	<div class="content9">
+		<fx-markup  style="font-weight:bold;"  family = "roboto">
+			<div slot = "element-name" style = "text-align:center;">
+				<span class = "largefont">Rollovers</span><br />
+				<span class = "largefont">AYYC037FX</span><br />
+				<span class = "smallfont italic silver" style = "padding-left:10px;">Loc: Courtyard/ 1,001 Pcs.</span>
+				<br />
+				
+			</div>
+		</fx-markup>
+	</div>
+	
+	<div class="content10" style="padding-top:20px;font-weight:bold;border-left:solid var(--fedexpurple) 1px;border-right:solid var(--fedexpurple) 1px;border-bottom:solid var(--fedexpurple) 1px; margin-right:80px;margin-left:80px;padding-bottom:110px;">
+		<fx-markup  style="font-weight:bold;"  family = "roboto">
+			<div slot = "element-name" style = "text-align:center;">
+				<span class = "largefont">Scan Rate <img src = "search.PNG" style= "height:25px;" /></span>
+				<br /> 
+			
+				<span class = "mediumfont">4,876/</span>
+				<span style = "font-size:20px;color:silver;">hr</span>
+				 <br /> 
+				<span class = "purple mediumfont" style ="text-decoration:underline;cursor:pointer;" onclick="hhh = document.getElementById('leaderboard');hhh.style.display = 'block';">Leaderboard</span>
+			</div>
+		</fx-markup>
+	</div>
+
+	<div class="content11" style = "margin-top:10px;">
+		<fx-markup  style="font-weight:bold;" family = "roboto"> 
+			<div slot = "element-name" style = "text-align:center;">
+				<span class = "largefont">AYYC038FX</span>
+				<br />
+				<span class = "smallfont italic silver">Loc: Courtyard/ 1,111 Pcs.</span>
+		</div>
+		</fx-markup>
+	</div>
+
+	
+	
+<div class = "outboundflights"> 
+	<span class = "mediumfont" style="color:#4D1486;font-weight:bold;">Inbound Flights</span>
+	<img src = "pencil.png" style = "height:25px;" onclick="ddd = document.getElementById('myflights');ddd.style.display = 'block';" id = "myBtn" style = "padding-left:10px;"  /><br /> 
+	
+	<table    id="details"  class = "mediumfont"  cellspacing="0" width="100%"> <!--must set the width of table to 100%-->
+				<thead>
+				<tr style = "text-align:center;"> 
+				<th data-sort-initial="true" data-type="numeric" data-class="expand"  data-toggle="true">Flight</th>
+				<th>Tail #</th>
+				<th>Gate</th>
+				<th>Arrive</th>
+				<th>Model</th>
+				<th>Cage</th>
+				<th>Guards</th>
+				<th>Fly</th>
+				 
+				</tr> 
+				</thead>      
+				 
+				<tr style = "text-align:center;">
+				<td  style="border-top:none;" name="id" >743</td>
+				<td style="border-top:none;">608</td>
+				<td style="border-top:none;">132</td>
+				<td style="border-top:none;">17:30</td>
+				 
+				<td style="border-top:none;">DC10</td>
+				<td style="border-top:none;">Y</td>
+				<td style="border-top:none;">Y</td>
+				<td style="border-top:none;">Y</td>
+				</tr>
+				
+				<tr style = "text-align:center;">
+				<td  style="border-top:none;" name="id" >743</td>
+				<td style="border-top:none;">608</td>
+				<td style="border-top:none;">132</td>
+				<td style="border-top:none;">17:30</td>
+				 
+				<td style="border-top:none;">DC10</td>
+				<td style="border-top:none;">Y</td>
+				<td style="border-top:none;">-</td>
+				<td style="border-top:none;">Y</td>
+				</tr>
+				
+				<tr style = "text-align:center;">
+				<td  style="border-top:none;" name="id" >743</td>
+				<td style="border-top:none;">608</td>
+				<td style="border-top:none;">132</td>
+				<td style="border-top:none;">17:30</td>
+				 
+				<td style="border-top:none;">DC10</td>
+				<td style="border-top:none;">-</td>
+				<td style="border-top:none;">Y</td>
+				<td style="border-top:none;">-</td>
+				</tr>
+				<tr >
+	</table>
+</div>
+	
+<!--JOB ASSIGNMENTS-->
+	<!--its important that this be relative position-->					 
+<div id = "jobasignments" style ="z-index:1000;width:100%;background-color:red;color:black; display:none;position:absolute;top:165px;">
+	
+	<div class="ui-widget ui-helper-clearfix" style = "background-color:white;font-family:roboto;font-size:22px;min-height:1000px;">
+						 
+		<div id="gallery" class="gallery ui-helper-reset ui-helper-clearfix" style = "position:absolute;top:505px;border-top:thin solid silver;height:530px;"> 
+						
+			<span  style = "margin-bottom:200px;padding-left:300px;  font-size:28px;width:400px;height:500px;font-weight:bold;text-shadow:none;">Unassigned</span>
+						
+						<h5 class="ui-widget-content ui-corner-tr  droppableShape " style = "padding-left:20px;">Anthony Smith 123456</h5>
+							
+						<h5 class="ui-widget-content ui-corner-tr  droppableShape " style = "padding-left:20px;">Paula Thomas 874529</h5>
+						
+						<h5  class="ui-widget-content ui-corner-tr  droppableShape " style = "padding-left:20px;">Joe Harris 670031</h5>
+							
+						 
+						<h5  class="ui-widget-content ui-corner-tr  droppableShape " style = "padding-left:20px;">Tom Harnel 119965</h5>
+						
+						<h5 class="ui-widget-content ui-corner-tr  droppableShape " style = "padding-left:20px;">Mary Jenkins 100473</h5>
+							
+						<h5 class="ui-widget-content ui-corner-tr  droppableShape " style = "padding-left:20px;">Janet Hanks 499977</h5>
+						
+						<h5  class="ui-widget-content ui-corner-tr  droppableShape " style = "padding-left:20px;">Tracy Roberts 408150</h5>
+		</div>
+						
+		<div   id = "load"  style = "position:absolute;top:75px;left:0px;width:50%;height:200px;text-shadow:none;border-right:solid thin silver;"> 
+			<h4  >Load</h4>
+		</div>
+						 
+		<div    id = "gate"  style = "position:absolute;top:75px;right:0px;width:45%;height:200px;text-shadow:none;"> 
+			<h4>Gate</h4>
+		</div>
+
+		<div   id = "slide"  style = "position:absolute;top:290px;left:0px;width:50%;height:200px;text-shadow:none;border-top:solid thin silver;border-right:solid thin silver;"> 
+			<h4  >Slide</h4>
+		</div>
+
+		<div   id = "drivers"  style = "border-top:solid thin silver;position:absolute;right:0px;top:290px;width:45%;height:200px;text-shadow:none;"> 
+			<h4   >Drivers</h4>
+		</div>
+
+		<input type="button" value="Save" style="position:absolute;right:50px;bottom:20px; height:35px;width:80px;">
+		
+		<input type="button" id= 'myClose'   onclick = "document.getElementById('jobasignments').style.display = 'none';" value="Cancel" style="position:absolute;bottom:20px; height:35px; right:150px;width:80px;"><br /><br /><br />
+	</div>						 
+</div>
+
+</div><!--wrapper-->
+
+<style>
+	#gallery { float: left; width: 100%;overflow-y: scroll;height:300px; }
+		.gallery.custom-state-active { background: #eee; }
+						  .gallery li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
+						  .gallery li h5 { margin: 0 0 0.4em; cursor: move; }
+						  .gallery li a { float: right; }
+						  .gallery li a.ui-icon-zoomin { float: left; }
+						  .gallery li img { width: 100%; cursor: move; }
+						 
+						  #load { float: right;   height:100px; padding: 1%;overflow-y: scroll; }
+						  #load h4 { line-height: 16px; margin: 0 0 0.4em; }
+						  #load h4 .ui-icon { float: left; }
+						  #load .gallery h5 { display: none; }
+						  
+						  #gate { float: right;   height:100px; padding: 1%;overflow-y: scroll; }
+						  #gate h4 { line-height: 16px; margin: 0 0 0.4em; }
+						  #gate h4 .ui-icon { float: left; }
+						  #gate .gallery h5 { display: none; }
+						  
+						  #slide { float: right;   height:100px; padding: 1%;overflow-y: scroll; }
+						  #slide h4 { line-height: 16px; margin: 0 0 0.4em; }
+						  #slide h4 .ui-icon { float: left; }
+						  #slide .gallery h5 { display: none; }
+						  
+						  #drivers { float: right;   height:100px; padding: 1%;overflow-y: scroll;}
+						  #drivers h4 { line-height: 16px; margin: 0 0 0.4em; }
+						  #drivers h4 .ui-icon { float: left; }
+						  #drivers .gallery h5 { display: none; }
+</style>			  
+		
+<script>
+                $( function() {
+						 
+							// There's the gallery and the trash
+							var $gallery = $( "#gallery" ),
+							  $load = $( "#load" );
+							  $gate = $( "#gate" );
+							  $slide = $( "#slide" );
+							  $drivers = $( "#drivers" );
+							  
+							// Let the gallery items be draggable
+							$( "h5", $gallery ).draggable({
+							  cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+							  revert: "invalid", // when not dropped, the item will revert back to its initial position
+							  containment: "document",
+							  helper: "clone",
+							  cursor: "move"
+							});
+							
+							// Let load be droppable, accepting the gallery items
+							$load.droppable({
+							accept: "#gallery > h5",
+							drop: function( event, ui ) {
+							deleteImageLoad( ui.draggable );
+							  }
+							});
+						 
+							// Let gate be droppable, accepting the gallery items
+							$gate.droppable({
+							accept: "#gallery > h5",
+							drop: function( event, ui ) {
+							deleteImage( ui.draggable );
+							  }
+							});
+							
+							// Let slide be droppable, accepting the gallery items
+							$slide.droppable({
+							accept: "#gallery > h5",
+							drop: function( event, ui ) {
+							deleteImageSlide( ui.draggable );
+							  }
+							});
+							
+							// Let drivers be droppable, accepting the gallery items
+							$drivers.droppable({
+							accept: "#gallery > h5",
+							drop: function( event, ui ) {
+							deleteImageDrivers( ui.draggable );
+							  }
+							});
+							
+							// Let the gallery be droppable as well, accepting items from gate
+							$gallery.droppable({
+							  accept: ".droppableShape",
+							  drop: function( event, ui ) {
+							  recycleImage( ui.draggable );
+							  }
+							});
+							
+							
+						 //DELETE
+							
+				//Note: modify var recycle_icon =  with						
+				// Image deletion function load
+							 var xxx_icon = "<a href=''  ></a>";   
+							function deleteImageLoad( $item ) {
+							  $item.fadeOut(function() {
+								var $list = $( "ul", $load ).length ?
+								  $( "ul", $load ) :
+								  $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $load );
+						 
+								$item.find( "a.ui-icon-trash" ).remove();
+								$item.append( xxx_icon ).appendTo( $list ).fadeIn(function() {
+								  $item
+									.animate({ width: "250px" })
+									.find( "img" )
+									  .animate({ height: "250px" });
+								});
+							  });
+							}   
+							
+							// Image deletion function gate
+
+							var xxx_icon = "<a href=''  ></a>";   
+							
+							function deleteImage( $item ) {
+							  $item.fadeOut(function() {
+								var $list = $( "ul", $gate ).length ?
+								  $( "ul", $gate ) :
+								   $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $gate );
+						 
+								//$item.find( "a.ui-icon-trash" ).remove();
+								$item.append( xxx_icon ).appendTo( $list ).fadeIn(function() {
+								  $item
+									.animate({ width: "250px" })
+									.find( "img" )
+									  .animate({ height: "250px" });
+								});
+							  });
+							}
+							
+							// Image deletion function slide
+							var xxx_icon = "<a href=''  ></a>";   
+							function deleteImageSlide( $item ) {
+							  $item.fadeOut(function() {
+								var $list = $( "ul", $slide ).length ?
+								  $( "ul", $slide ) :
+								  $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $slide );
+						 
+								$item.find( "a.ui-icon-trash" ).remove();
+								$item.append( xxx_icon ).appendTo( $list ).fadeIn(function() {
+								  $item
+									.animate({ width: "250px" })
+									.find( "img" )
+									  .animate({ height: "250px" });
+								});
+							  });
+							}
+							
+							// Image deletion function drivers
+							var xxx_icon = "<a href=''  ></a>";   
+							function deleteImageDrivers( $item ) {
+							  $item.fadeOut(function() {
+								var $list = $( "ul", $drivers ).length ?
+								  $( "ul", $drivers ) :
+								  $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $drivers );
+						 
+								$item.find( "a.ui-icon-trash" ).remove();
+								$item.append( xxx_icon ).appendTo( $list ).fadeIn(function() {
+								  $item
+									.animate({ width: "250px" })
+									.find( "img" )
+									  .animate({ height: "250px" });
+								});
+							  });
+							}
+							
+						 
+						//Recycle	
+						 
+							// Image recycle function
+							var trash_icon = "<a href='link/to/trash/script/when/we/have/js/off' title='Delete this image' class='ui-icon ui-icon-trash'>Delete</a>";
+							function recycleImage( $item ) {
+							  $item.fadeOut(function() {
+								$item
+								  .find( "a.ui-icon-refresh" )
+									.remove()
+								  .end()
+								  .css( "width", "250px")
+								  
+								  .find( "img" )
+									.css( "height", "250px" )
+								  .end()
+								  .appendTo( $gallery )
+								  .fadeIn();
+							  });
+							}
+						 
+							// Image preview function, demonstrating the ui.dialog used as a modal window
+							/*function viewLargerImage( $link ) {
+							  var src = $link.attr( "href" ),
+								title = $link.siblings( "img" ).attr( "alt" ),
+								$modal = $( "img[src$='" + src + "']" );
+						 
+							  if ( $modal.length ) {
+								$modal.dialog( "open" );
+							  } else {
+								var img = $( "<img alt='" + title + "' width='384' height='288' style='display: none; padding: 8px;' />" )
+								  .attr( "src", src ).appendTo( "body" );
+								setTimeout(function() {
+								  img.dialog({
+									title: title,
+									width: 400,
+									modal: true
+								  });
+								}, 1 );
+							  }
+							}*/
+						 
+							// Resolve the icons behavior with event delegation
+							/*$( "ul.gallery > li" ).on( "click", function( event ) {
+							  var $item = $( this ),
+								$target = $( event.target );
+						 
+							  if ( $target.is( "a.ui-icon-trash" ) ) {
+								deleteImage( $item );
+							  } else if ( $target.is( "a.ui-icon-zoomin" ) ) {
+								viewLargerImage( $target );
+							  } else if ( $target.is( "a.ui-icon-refresh" ) ) {
+								recycleImage( $item );
+							  }
+						 
+							  return false;
+							});*/
+			} );
+			</script>
+
+</body>	
+
+<!--Note: this screen does not use the grid.  Grid interfers with elements on the screen
+that fail to operate at expected ie. they dont's respond to clicks and anchor elements.
+As a result, I have implemented this screen with what amountst to my own grid and 
+all is good.-->
+</html>			

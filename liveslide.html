@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale= 1">
+  <title>RADAR</title>
+  <!--IMPORTANT jQuery must come first before bootstrap-->
+
+<!--jquery-->
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>-->
+
+<!--needed on this screen only for drag and drop-->
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!--jquery ui-->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+
+<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">-->
+
+ <!--jquery datatables-->
+<!--<script src="http://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.3/css/jquery.dataTables.css" />-->
+
+<!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+
+<!--fedex web components-->   
+<script src="faar-search.js"></script>
+<script src="fx-dropdownmenu.js"></script>
+<script src="fx-listbox.js"></script>
+<script src="fx-markup.js"></script>
+<script src="radar-scales.js"></script>
+<script src="radar-flights.js"></script>
+<script src="radar-flightsxxx.js"></script>
+<script src="radar-jobs.js"></script>
+<script src="date-widget.comp.js"></script>
+<script src="radar-flightspre.js"></script>
+<script src="radar-leaderboard.js"></script>
+
+<!--from faar-stationaddworkgroup.html-->
+<script src="faar-headersearch.js"></script>
+<script src="fx-dropdownmenu.js"></script>
+<script src="faar-simplelistbox.js"></script>
+<script src="fx-markup.js"></script>
+<script src="faar-stationtable.js"></script>
+<script src="fx-utilitybutton.js"></script>
+<script src="faar-addworkgroup.js"></script>
+<script src="fx-secondarybutton.js"></script>
+<script src="faar-listbox.js"></script>
+<script src="fx-accordion-item.js"></script>
+<script src="fx-accordion-item.js"></script>
+
+<style>
+
+body {background-color:rgb(70 70 70);
+}
+
+.wrapper {
+  display:grid;
+  grid-template-columns: fl fl;
+  grid-template-rows:  80px 60px 60px 400px 400px;
+  grid-gap: 5px;
+  background-color: #fff;
+  color: #444;
+  width:768px;
+  margin:auto;  //horizontal center the grid on screen
+  border:1px solid silver;
+  font-family:roboto;
+}
+	
+.header 	{
+        grid-column:1/span 2 ;
+        grid-row:1;
+		line-height: .5em;
+    }
+	
+.menu 		{
+        grid-column:1/span 2;
+        grid-row: 2;
+    }
+	
+.viewselect {
+		grid-column:1/span 2;
+        grid-row: 3;
+	}
+	
+.gate1 	{
+        grid-column :1 / span 2;
+        grid-row : 4;
+    }
+			
+.gate3 	{
+        grid-column: 1 / span 2;
+        grid-row : 5;
+    }
+</style>
+
+</head>
+
+<body>
+
+ 
+
+<div class = "wrapper" style = "margin-bottom:150px;">
+
+<div class="header" style = "position:relative;">
+<date-widget style = "position:absolute;top:0px;right:0px;"></date-widget>
+<fx-markup class = "header" style="font-weight:bold;" width = 768 height = 80 c = #4D148C textcolor = "white" size = 32 family = "roboto"><div slot = "element-name" style = "text-align:center;padding-top:30px;font-family:roboto;">RADAR Outbound - PDX </div>
+</fx-markup >
+</div>
+
+<div class="menu" style = "border-bottom: solid 3px silver;">
+<fx-dropdownmenu 
+width = 768 
+height = 50 
+orientation = left 
+c = "white";                       
+size = 22
+class = "menu"
+
+link1 = "preSort.html"
+link3 = "sort.html"
+link5 = "live.html"
+link6 = "notes.html" 
+style="margin-bottom:200px;font-family:roboto;">
+<a slot = "drop-text1" style = "color:silver;font-weight:bold;margin-left:90px;text-decoration:none;" href = "presort.html" >PRE-SORT</a>
+
+<a slot = "drop-text2" href = "sort.html" style = "color:silver;font-weight:bold;margin-left:60px;color:silver;text-decoration:none;" href = "sort.html">SORT</a>
+
+<a slot = "drop-text3" style = "color:#4D148C;font-weight:bold;margin-left:60px;text-decoration:none;" href = "live.html">LIVE VIEWS</a>
+
+<a slot = "drop-text4" style = "color:silver;font-weight:bold;margin-left:60px;color:silver;text-decoration:none;" href = "notes.html">MY NOTES</a>
+</fx-dropdownmenu>
+</div>
+
+<div class="box viewselect"  style = "padding-top:10px;">
+<input type="radio" id="all" name="view" value="all" style="-webkit-transform: scale(2);transform: scale(3);margin-left:55px;">
+<label for="male" style = "padding-left:10px;">All</label> 
+
+<input type="radio" id="gates" name="view" value="gates" style="-webkit-transform: scale(2);transform: scale(3);margin-left:55px;" onclick = "document.location.href =  'live.html'">
+<label for="female" style = "padding-left:10px;">Gates</label> 
+
+<input type="radio" id="slide" name="view" value="slide" checked = "true" style="-webkit-transform: scale(2);transform: scale(3);margin-left:55px;" onclick = "document.location.href =  'liveslide.html'">
+<label for="other" style = "padding-left:10px;">Slide</label>
+
+<input type="radio" id="staging" name="view" value="staging" style="-webkit-transform: scale(2);transform: scale(3);margin-left:55px;" onclick = "document.location.href =  'livestaging.html'">
+<label for="other" style = "padding-left:10px;">Staging</label>
+
+<input type="radio" id="other" name="view" value="other" style="-webkit-transform: scale(2);transform: scale(3);margin-left:55px;">
+<label for="other" style = "padding-left:10px;">Other</label>
+</div>
+
+<div class="box gate1" style = "border:thin black solid;position:relative;background-image: url('sortone.jpg');background-size:765px 600px;background-color:white;background-repeat: no-repeat;">
+
+
+<div style = "float:left;top:0px;height:35px;width:120px;background-color:#4D148C;color:white;border-radius:0px  0px 10px  0px; ;padding-left:10px;">Slide 1</div>
+
+<fx-button id= "showsearch" style = "position:absolute;bottom:80px;right:80px;"  c = #4D148C  width = 70 height = 70 trans = 1  rad =  "50">
+<span slot = 'button-image'><img src = 'search-3-48.png' style="padding-top:10px;" /></span>
+</fx-button>
+</div>
+
+<div class="box gate3" style = "border:thin black solid;position:relative;background-image: url('sorttwo.jpg');background-size:765px 600px;background-color:white;">
+
+<div style = "float:left;top:0px;height:35px;width:120px;background-color:#4D148C;color:white;border-radius:0px  0px 10px  0px; ;padding-left:10px;">Slide 2</div>
+
+<fx-button id= "showsearch" style = "position:absolute;bottom:80px;right:80px;"  c = #4D148C  width = 70 height = 70 trans = 1  rad =  "50">
+<span slot = 'button-image'><img src = 'search-3-48.png' style="padding-top:10px;" /></span>
+</fx-button>
+</div>
+
+ 
+
+ 
+</div><!--wrapper-->
+
+</body>
+</html>

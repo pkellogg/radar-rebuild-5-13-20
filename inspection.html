@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RADAR</title>
+
+ 
+
+<!--fedex web components-->   
+<script src="faar-search.js"></script>
+<script src="fx-dropdownmenu.js"></script>
+<script src="fx-listbox.js"></script>
+<script src="fx-markup.js"></script>
+<script src="radar-scales.js"></script>
+<script src="date-widget.comp.js"></script>
+
+<style>
+
+	body 				{
+						font-family:roboto;
+						--fedexitalic: italic;
+						--fedexpurple: #4D148C;"
+						--fedexdarkgray: rgb(70 70 70);
+	 					--fedexsilver: silver;
+						}
+						
+	.xlargefont			{
+						font-size:32px;
+						}
+						
+	.largefont 			{
+						font-size: 26px;
+						}
+	 
+	.mediumfont 		{
+						font-size: 24px;
+						}
+	 
+	.smallfont 			{
+						font-size: 16px;
+						}
+	
+	.italic 			{
+						font-style: var(--fedexitalic);
+						}
+	
+	.purple 			{
+						color: var(--fedexpurple);
+						}
+	
+	.silver 			{
+						color: var(--fedexsilver);
+						}
+ 
+
+	.wrapper 			{
+						width:768px;
+						display: grid;
+						grid-template-columns: 1;
+						grid-template-rows: 80px 50px auto;
+						background-color: #fff;
+						color: #444;
+						margin:auto;  //horizontal center the grid on screen
+						}
+	
+	 
+
+	.header 			{
+						grid-column:1  ;
+						grid-row:1;
+						}
+	
+	.menu 				{
+						grid-column:1 ;
+						grid-row: 2;
+						}
+	
+	.content1 			{
+						grid-column : 1 / span 2;
+						grid-row : 3;
+						}
+	
+	#presort			{
+						 padding-right:15px;padding-left:0px;color:var(--fedexpurple);
+						}
+
+	#sort				{
+						padding-right:20px;
+						color:var(--fedexsilver);
+						} 
+
+	#live				{
+						padding-right:20px;
+						color:var(--fedexsilver);
+						}
+
+	#notes				{
+						color:var(--fedexsilver);
+						}
+</style>
+
+<script>
+function startTime() {
+  offset = 8;
+  var today = new Date();
+  var h = today.getUTCHours();
+  var m = today.getUTCMinutes();
+  var s = today.getUTCSeconds();
+  h = h + offset;
+  if (h > 24) {
+    h = h - 24;
+  }
+  if (h < 0) {
+    h = h + 24;
+  }
+  h = checkTime(h);
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+  var t = setTimeout(function() {
+    startTime()
+  }, 500);
+}
+
+function checkTime(i) {
+  if (i < 10) {
+    i = "0" + i
+  };
+  return i;
+}
+
+startTime()
+</script>
+
+</head>
+
+<body>
+
+<div class = "wrapper">
+ 
+	<div class="header xlargefont">
+		<fx-markup class = "header" style="font-weight:bold;" width = 768 height = 80 c = #4D148C textcolor = "white"  family = "roboto"><div slot = "element-name" style = "text-align:center;padding-top:20px;font-family:roboto;">RADAR Outbound - PDX </div>
+		</fx-markup>
+		<date-widget style = "position:absolute;top:10px;right:0px;"></date-widget>
+	</div>
+
+<div class="menu">
+
+<fx-dropdownmenu 
+width = 768 
+ 
+orientation = left 
+c = "white";                       
+size = 22
+ 
+ 
+link1 = "preSort.html"
+link2 = ""
+link3 = "sort.html"
+style="font-family:roboto;">
+<a slot = "drop-text1" style = "color:#4D148C;font-weight:bold;margin-left:100px;text-decoration:none;" href = "presort.html" >PRE-SORT</a>
+
+<a slot = "drop-text2" href = "sort.html" style = "color:#4D148C;font-weight:bold;margin-left:60px;color:silver;text-decoration:none;" href = "sort.html">SORT</a>
+
+<a slot = "drop-text3" style = "color:#4D148C;font-weight:bold;margin-left:60px;color:silver;text-decoration:none;" href = "live.html">LIVE VIEWS</a>
+
+<a slot = "drop-text4" style = "color:#4D148C;font-weight:bold;margin-left:60px;color:silver;text-decoration:none;" href = "notes.html">MY NOTES</a>
+</fx-dropdownmenu></div>
+
+<!--<div class="box content1"><radar-scales></radar-scales></div>-->
+
+ 
+
+<div style = "position:relative;margin-left:40px;margin-right:10px;margin-top:30px;" > 
+	<span style="font-size:38px;color:#4D1486;font-weight:bold;margin-left:130px;">Daily Schedule Inspection</span><br /><br />
+	
+	<!--<img src = "pencil.png" style = "height:25px;" onclick="ddd = document.getElementById('myflights');ddd.style.display = 'block';" id = "myBtn" style = "padding-left:10px;"  />-->
+	
+	<table    id="details"  class = "smallfont"  cellspacing="3" width="100%"> <!--must set the width of table to 100%-->
+				<thead>
+				<tr style = "text-align:left;"> 
+					<th>Piece #</th>
+					<th>Sticker ?</th>
+					<th>ULD #</th>
+					<th>Weight</th>
+					<th>Limits ?</th>
+					<!--<th>Remarks</th>-->
+					 
+				</tr> 
+				</thead>      
+				 
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->
+					 
+				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->
+					 
+				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->
+					 
+				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->
+				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->				</tr>
+				
+				<tr >
+					<td  style="border-top:none;" name="id" >S18-R3-SD1</td>
+					<td style="border-top:none;"><label for = 'sticker'>Y</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'uld' style = "height:18px;width:100px;font-size:22px;"></td>
+					<td style="border-top:none;"><input type = 'textbox' name = 'weight' style = "height:18px;width:50px;font-size:22px;"></td>
+					<td style="border-top:none;"><label for = 'limit'>Y</label><input type = 'checkbox' name = 'limit' style= 'height:20px;width:20px;font-size:22px;'><label for = 'sticker'>N</label><input type = 'checkbox' name = 'sticker' style= 'height:20px;width:20px;font-size:22px;'></td>
+<!--<td style="border-top:none;"><input type = 'textbox' name = 'remarks' style = "height:18px;width:150px;font-size:22px;"></td>-->				</tr>
+	</table><br /><br />
+ 
+	<span class = "smallfont" ><b>Instructions</b>: if scale is "INOP" or "Out of Limits", place visible notification on the scale readout display marked "Scale INOP - Do Not Use".  Report scale issues to Ramp Management or designated Scale Maintenance Vendor.</span><br /><br />
+	
+	<input type='button' id= 'mySave'   value='Save' style='float:right;margin-right:20px;height:35px;width:80px;'> 
+	<input type='button' id= 'myClose'   value='Cancel' style='float:right;margin-right:10px;height:35px;width:80px;'><br><BR><br
+</div>
+
+</div><!--wrapper-->
+
+</body>
+</html>
