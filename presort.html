@@ -91,7 +91,7 @@ Note: yoou need height on wrapper to display schedule people right-->
 .wrapper 				{
 						display:grid;
 						grid-gap: 0px;
-						grid-template-rows:  80px 60px 10px 10px 10px 80px 80px 80px 80px 80px 80px 150px;
+						grid-template-rows:  80px 60px 10px 10px 10px 100px 100px 100px 100px 100px 100px 150px;
 						background-color:white;
 						color: #444;
 						width:768px;
@@ -252,9 +252,13 @@ Note: yoou need height on wrapper to display schedule people right-->
 						 
 						color:var(--fedexsilver);
 						}
+						
+	.menufont			{
+						font-size: 32px;
+						}
 	
 	.xlargefont			{
-						font-size:32px;
+						font-size:42px;
 						}
 	
 						
@@ -265,7 +269,7 @@ Note: yoou need height on wrapper to display schedule people right-->
 						}
 	 
 	.mediumfont 		{
-						font-size: 24px;
+						font-size: 20px;
 						}
 	 
 	.smallfont 			{
@@ -345,12 +349,15 @@ startTime()
 	 
 		<div class = "wrapper" >
 			 
-			 <button onclick="myFunction()" style = "position:absolute;top:850px;left:0px;">Try it</button>  
+			 <button onclick="myFunction()" style = "position:absolute;top:940px;left:0px;">Try it</button>  
 		
-			<div class="header xlargefont" style = "position:relative;">
+			<div class="header menufont" style = "position:relative;">
 				<fx-markup class = "header" style="font-weight:bold;" width = 768 height = 80 c = #4D148C textcolor = "white"  family = "roboto"><div slot = "element-name" style = "text-align:center;padding-top:20px;font-family:roboto;">RADAR Outbound - PDX </div>
 				</fx-markup >
-				<date-widget style = "position:absolute;top:0px;right:0px;"></date-widget>
+				<!--<date-widget style = "position:absolute;top:0px;right:0px;"></date-widget>-->
+				<span style = "position:absolute;right:20px;top:15px;color: white;font-family:roboto;font-size:16px;font-weight:normal;">11:33:29</span>
+				<span style = "position:absolute;right:20px;top:35px;color: white;font-family:roboto;font-size:16px;font-weight:normal;">GMT 16:33:29</span>
+				<span style = "position:absolute;right:45px;top:55px;color: white;font-family:roboto;font-size:16px;font-weight:normal;">SORT 14:45</span>
 			</div>
 			
 			<fx-dropdownmenu   orientation = left c = white  size = 22  style = "border-bottom: solid 3px silver;">
@@ -392,13 +399,13 @@ startTime()
  
 
 	<div class="content1">
-		<fx-markup  style="font-weight:bold;" family = "roboto"><div  slot = "element-name" style = "text-align:center;color:var(--fedexpurple);"><span class = "largefont" >Expected Volume</span><br /><span class = "mediumfont">16,300</span></div>
+		<fx-markup  style="font-weight:bold;" family = "roboto"><div  slot = "element-name" style = "text-align:center;"><span class = "mediumfont" >Expected Volume</span><br /><span class = "xlargefont purple">16,300</span></div>
 		</fx-markup>
 	</div>
 
 	<div class="content2">
 		<fx-markup  style="font-weight:bold;"  family = "roboto">
-			<div slot = "element-name" style = "text-align:center;"><span class = "largefont">Sort Starts At</span><br /><span class = "mediumfont">18:05</span>
+			<div slot = "element-name" style = "text-align:center;"><span class = "mediumfont">Sort Starts At</span><br /><span class = "xlargefont purple">18:05</span>
 			<br />
 			<!--<span class = "smallfont" style = "display:block;">(finalized)</span>-->
 			</div>
@@ -406,7 +413,7 @@ startTime()
 	</div>
 
 	<div class="content3"  >
-		<fx-markup  style="font-weight:bold;" family = "roboto"><div slot = "element-name" style = "text-align:center;"><span class = "largefont">Bypass Cans</span><br /><span class = "mediumfont">6</span><span class = "smallfont italic silver" style = "padding-left:10px;">4 Top / 2 Lower</span></div>
+		<fx-markup  style="font-weight:bold;" family = "roboto"><div slot = "element-name" style = "text-align:center;"><span class = "mediumfont">Bypass Cans</span><br /><span class = "xlargefont purple">6</span><span class = "smallfont italic silver" style = "padding-left:10px;">4 Top / 2 Lower</span></div>
 		</fx-markup>
 	</div>
 
@@ -419,32 +426,32 @@ startTime()
 
 	<div class="content5">
 		<fx-markup  style="font-weight:bold;"  family = "roboto">
-			<div slot = "element-name" style = "text-align:center;"><span class = "largefont">Haz Volume</span><br /><span class = "mediumfont">22</span><img src = "search.PNG" style = "padding-left:15px;height:25px"/></div>
+			<div slot = "element-name" style = "text-align:center;"><span class = "mediumfont">Haz Volume</span><br /><span class = "xlargefont purple">22</span><img src = "search.PNG" style = "padding-left:15px;height:25px"/></div>
 		</fx-markup>
 	</div>
 
 	<div class="content6">
 		<fx-markup   family = "roboto">
-			<div slot = "element-name" style = "text-align:center;">
-			<span class = "largefont" style = "font-weight:bold;text-align:center;">Scheduled People</span><br /><span class = "mediumfont" style = "font-weight:bold;">14/</span><span class = "mediumfont" style = "font-weight:bold;">14</span>&nbsp;&nbsp;&nbsp;<img src = "pencil.PNG"   style = "height:25px;" onclick="ddd = document.getElementById('jobasignments');ddd.style.display = 'block';" /></span>
+			<div slot = "element-name" style = "text-align:center;font-weight:bold;">
+			<span class = "mediumfont" style = "text-align:center;">Scheduled People</span><br /><span class = "xlargefont purple">24/</span><span class = "xlargefont purple" >25</span>&nbsp;&nbsp;&nbsp;<img src = "pencil.PNG"   style = "height:25px;" onclick="ddd = document.getElementById('jobasignments');ddd.style.display = 'block';" /></span>
 			</div>
 		</fx-markup>
 	</div> 
 
 	<div class="content7">
-		<fx-markup  style="font-weight:bold;" family = "roboto"><div slot = "element-name" style = "text-align:center;"><span class = "largefont">Hwt Volume</span><br /><span class = "mediumfont">30</span><img src = "search.PNG" style = "padding-left:15px;height:25px;"/></div>
+		<fx-markup  style="font-weight:bold;" family = "roboto"><div slot = "element-name" style = "text-align:center;"><span class = "mediumfont">Hwt Volume</span><br /><span class = "xlargefont purple">30</span><img src = "search.PNG" style = "padding-left:15px;height:25px;"/></div>
 		</fx-markup>
 	</div>
 	
 	<div class="content8" style="margin-top:20px;font-weight:bold;border-left:solid var(--fedexpurple) 1px;border-right:solid var(--fedexpurple) 1px;margin-right:80px;margin-left:80px;padding-top:20px;position:relative;">
 		
-		<span style = "position:absolute;left:-1px;top:-15px;font-size:6px;color:white;background-color:var(--fedexpurple);width:101%;font-weight:normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;previous sort</span>
+		<span style = "position:absolute;left:-1px;top:-15px;font-size:6px;color:white;background-color:var(--fedexpurple);width:101%;font-weight:normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;previous sort</span>
 	
 		<fx-markup     family = "roboto">
 			<div slot = "element-name" style = "text-align:center;">
-				<span class = "largefont">ULD Density</span>
+				<span class = "mediumfont">ULD Density</span>
 				<br />
-				<span class = "mediumfont">87.6%</span>
+				<span class = "xlargefont purple">87.6%</span>
 			</div>
 		</fx-markup>
 	</div>
@@ -452,8 +459,8 @@ startTime()
 	<div class="content9">
 		<fx-markup  style="font-weight:bold;"  family = "roboto">
 			<div slot = "element-name" style = "text-align:center;">
-				<span class = "largefont">Rollovers</span><br />
-				<span class = "largefont">AYYC037FX</span><br />
+				<span class = "mediumfont">Rollovers</span><br />
+				<span class = "xlargefont purple">AYYC037FX</span><br />
 				<span class = "smallfont italic silver" style = "padding-left:10px;">Loc: Courtyard/ 1,001 Pcs.</span>
 				<br />
 				
@@ -464,12 +471,12 @@ startTime()
 	<div class="content10" style="padding-top:20px;font-weight:bold;border-left:solid var(--fedexpurple) 1px;border-right:solid var(--fedexpurple) 1px;border-bottom:solid var(--fedexpurple) 1px; margin-right:80px;margin-left:80px;padding-bottom:110px;">
 		<fx-markup  style="font-weight:bold;"  family = "roboto">
 			<div slot = "element-name" style = "text-align:center;">
-				<span class = "largefont">Scan Rate <img src = "search.PNG" style= "height:25px;" /></span>
+				<span class = "mediumfont">Scan Rate <img src = "search.PNG" style= "height:25px;" /></span>
 				<br /> 
 			
-				<span class = "mediumfont">4,876/</span>
+				<span class = "xlargefont purple">4,876/</span>
 				<span style = "font-size:20px;color:silver;">hr</span>
-				 <br /> 
+				 <br />
 				<span class = "purple mediumfont" style ="text-decoration:underline;cursor:pointer;" onclick="hhh = document.getElementById('leaderboard');hhh.style.display = 'block';">Leaderboard</span>
 			</div>
 		</fx-markup>
@@ -478,7 +485,7 @@ startTime()
 	<div class="content11" style = "margin-top:10px;">
 		<fx-markup  style="font-weight:bold;" family = "roboto"> 
 			<div slot = "element-name" style = "text-align:center;">
-				<span class = "largefont">AYYC038FX</span>
+				<span class = "xlargefont purple">AYYC038FX</span>
 				<br />
 				<span class = "smallfont italic silver">Loc: Courtyard/ 1,111 Pcs.</span>
 		</div>
@@ -488,7 +495,7 @@ startTime()
 	
 	
 <div class = "outboundflights"> 
-	<span class = "mediumfont" style="color:#4D1486;font-weight:bold;">Inbound Flights</span>
+	<span class = "mediumfont" style="color:#4D1486;font-weight:bold;">Outbound Flights</span>
 	<img src = "pencil.png" style = "height:25px;" onclick="ddd = document.getElementById('myflights');ddd.style.display = 'block';" id = "myBtn" style = "padding-left:10px;"  /><br /> 
 	
 	<table    id="details"  class = "mediumfont"  cellspacing="0" width="100%"> <!--must set the width of table to 100%-->
@@ -519,9 +526,9 @@ startTime()
 				</tr>
 				
 				<tr style = "text-align:center;">
-				<td  style="border-top:none;" name="id" >743</td>
-				<td style="border-top:none;">608</td>
-				<td style="border-top:none;">132</td>
+				<td  style="border-top:none;" name="id" >721</td>
+				<td style="border-top:none;">858</td>
+				<td style="border-top:none;">383</td>
 				<td style="border-top:none;">17:30</td>
 				 
 				<td style="border-top:none;">DC10</td>
@@ -531,9 +538,9 @@ startTime()
 				</tr>
 				
 				<tr style = "text-align:center;">
-				<td  style="border-top:none;" name="id" >743</td>
-				<td style="border-top:none;">608</td>
-				<td style="border-top:none;">132</td>
+				<td  style="border-top:none;" name="id" >760</td>
+				<td style="border-top:none;">614</td>
+				<td style="border-top:none;">301</td>
 				<td style="border-top:none;">17:30</td>
 				 
 				<td style="border-top:none;">DC10</td>
@@ -551,7 +558,7 @@ startTime()
 	
 	<div class="ui-widget ui-helper-clearfix" style = "background-color:white;font-family:roboto;font-size:22px;min-height:1000px;">
 						 
-		<div id="gallery" class="gallery ui-helper-reset ui-helper-clearfix" style = "position:absolute;top:505px;border-top:thin solid silver;height:530px;"> 
+		<div id="gallery" class="gallery ui-helper-reset ui-helper-clearfix" style = "position:absolute;top:440px;border-top:thin solid silver;height:530px;"> 
 						
 			<span  style = "margin-bottom:200px;padding-left:300px;  font-size:28px;width:400px;height:500px;font-weight:bold;text-shadow:none;">Unassigned</span>
 						
@@ -566,30 +573,30 @@ startTime()
 						
 						<h5 class="ui-widget-content ui-corner-tr  droppableShape " style = "padding-left:20px;">Mary Jenkins 100473</h5>
 							
-						<h5 class="ui-widget-content ui-corner-tr  droppableShape " style = "padding-left:20px;">Janet Hanks 499977</h5>
+						 
 						
-						<h5  class="ui-widget-content ui-corner-tr  droppableShape " style = "padding-left:20px;">Tracy Roberts 408150</h5>
+						 
 		</div>
 						
-		<div   id = "load"  style = "position:absolute;top:75px;left:0px;width:50%;height:200px;text-shadow:none;border-right:solid thin silver;"> 
+		<div   id = "load"  style = "position:absolute;top:0px;left:0px;width:50%;height:200px;text-shadow:none;border-right:solid thin silver;"> 
 			<h4  >Load</h4>
 		</div>
 						 
-		<div    id = "gate"  style = "position:absolute;top:75px;right:0px;width:45%;height:200px;text-shadow:none;"> 
+		<div    id = "gate"  style = "position:absolute;top:0px;right:0px;width:45%;height:200px;text-shadow:none;"> 
 			<h4>Gate</h4>
 		</div>
 
-		<div   id = "slide"  style = "position:absolute;top:290px;left:0px;width:50%;height:200px;text-shadow:none;border-top:solid thin silver;border-right:solid thin silver;"> 
+		<div   id = "slide"  style = "position:absolute;top:220px;left:0px;width:50%;height:200px;text-shadow:none;border-top:solid thin silver;border-right:solid thin silver;"> 
 			<h4  >Slide</h4>
 		</div>
 
-		<div   id = "drivers"  style = "border-top:solid thin silver;position:absolute;right:0px;top:290px;width:45%;height:200px;text-shadow:none;"> 
+		<div   id = "drivers"  style = "border-top:solid thin silver;position:absolute;right:0px;top:220px;width:45%;height:200px;text-shadow:none;"> 
 			<h4   >Drivers</h4>
 		</div>
 
-		<input type="button" value="Save" style="position:absolute;right:50px;bottom:20px; height:35px;width:80px;">
+		<input type="button" value="Save" style="position:absolute;right:50px;bottom:150px; height:35px;width:80px;">
 		
-		<input type="button" id= 'myClose'   onclick = "document.getElementById('jobasignments').style.display = 'none';" value="Cancel" style="position:absolute;bottom:20px; height:35px; right:150px;width:80px;"><br /><br /><br />
+		<input type="button" id= 'myClose'   onclick = "document.getElementById('jobasignments').style.display = 'none';" value="Cancel" style="position:absolute;bottom:150px; height:35px; right:150px;width:80px;"><br /><br /><br />
 	</div>						 
 </div>
 

@@ -36,9 +36,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <div id='myModal' class = 'modalx' ">
 	<div class = 'modal-content'>
 		<p id="demo" >This is demo</p>
-		<input type="button" value="Save" style="float:right;height:35px;width:80px;margin-top:170px;margin-right:20px;">
+		<input type="button" value="Save" style="float:right;height:35px;width:80px;margin-right:40px;">
 
-		<input type="button" id= 'myClose'   onclick = "document.getElementById('myarrivals').style.display = 'none';" value="Cancel" style="float:right;height:35px;margin-right:10px;width:80px;margin-top:170px;"><br /><br /><br /> 
+		<input type="button" id= 'myClose'   onclick = "document.getElementById('myarrivals').style.display = 'none';" value="Cancel" style="float:right;height:35px;margin-right:10px;width:80px;"><br /><br /><br /> 
 
 	</div>
 </div> 
@@ -70,7 +70,7 @@ myObj2 = [
   ];
 
 var txt = "";
-txt +=  "<div style='background-color:#4D148C;width:100%;height:60px;color:white;font-family:roboto;font-size:38px;font-weight:bold;text-align:center;'>Last Arrivals Details</div><table   style='font-family:roboto;width:100%;text-align:left;padding-left:110px;padding-right:80px;margin-top:70px;'><tr ><th style = 'color:gray;'>Flight #</th><th style = 'color:gray;'>Origin</th><th style = 'color:gray;'>Arriving</th></tr>"
+txt +=  "<div style='background-color:#4D148C;width:100%;height:60px;color:white;font-family:roboto;font-size:38px;font-weight:bold;text-align:center;padding-top:10px;'>Last Arrivals Details</div><table   style='font-family:roboto;width:100%;text-align:left;padding-left:110px;padding-right:80px;margin-top:70px;'><tr ><th style = 'color:gray;'>Flight #</th><th style = 'color:gray;'>Origin</th><th style = 'color:gray;'>Arriving</th></tr>"
 	
 	 for (x in myObj) {
        txt += "<tr style = 'font-weight:bold;'>" + "<td>" + myObj[x].flight + "<td>" + myObj[x].origin + "</td>" + "<td>" + myObj[x].arrive + "</td>" + "</tr>"  +

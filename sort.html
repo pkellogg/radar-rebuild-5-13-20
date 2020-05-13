@@ -254,36 +254,62 @@ body {background-color:rgb(70 70 70);
   font-family:roboto;
  }
 
-.box {
-  color: black;
-  padding: 0px;
-  font-size: 150%;
-  font-family:roboto;
- }
+.box 	{
+		font-family:roboto;
+		}
+ 
+.menufont				{
+						font-size: 32px;
+						}
+ 
+ .xlargefont			{
+						font-size:32px;
+						}
+	
+						
+
+	.largefont 			{
+						font-size: 26px;
+						color:black; 
+						}
+	 
+	.mediumfont 		{
+						font-size: 24px;
+						}
+	 
+	.smallfont 			{
+						font-size: 16px;
+						}
+	
+	.italic 			{
+						font-style: var(--fedexitalic);
+						}
+	
+	.purple 			{
+						color: var(--fedexpurple);
+						}
+	
+	.silver 			{
+						color: var(--fedexsilver);
+						}
 
 
 	
-.content1 	{
-			width:50%;
-			}
-	
-.content2 	{
-			width:50%;
-			}
+ 
 	
 .flight  {
         grid-column:1 / span 2;
         grid-row:8;
 		display:grid;
 		grid-gap:0px;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-		margin-bottom: 200px;
+		grid-template-columns: 70px 70px 70px 70px 70px 70px 70px 70px 70px;
+		margin-bottom: 100px;
 		} 
 		
 .flight1 {
 			grid-column:1
 			grid-row:1;
-			grid-gap:5px;
+			grid-gap:0px;
 	}
 	
 	.flight2 {
@@ -351,16 +377,7 @@ body {background-color:rgb(70 70 70);
 			grid-column:1/span 2;
 			grid-row:3 /span 5;
 						
-/*background-color: rgba(0,0,0,0.4);*/  		
-	}
-	
-	.jobs	{
-			position:absolute;
-			top: -150px;
-			left:-40px;
-			width:110%;
-			grid-column:1/span 2;
-			grid-row:3 /span 5;  
+ 		
 	}
 </style>
 
@@ -370,11 +387,14 @@ body {background-color:rgb(70 70 70);
 
 <div class = "wrapper">
  
-	<date-widget style = "position:absolute;top:10px;right:0px;"></date-widget>
+	<!--<date-widget style = "position:absolute;top:10px;right:0px;"></date-widget>-->
+	 <span style = "position:absolute;right:20px;top:15px;color: white;font-family:roboto;font-size:16px;font-weight:normal;">11:33:29</span>
+				<span style = "position:absolute;right:20px;top:35px;color: white;font-family:roboto;font-size:16px;font-weight:normal;">GMT 16:33:29</span>
+				<span style = "position:absolute;right:45px;top:55px;color: white;font-family:roboto;font-size:16px;font-weight:normal;">SORT 14:45</span>
 
-	<div class="header" style = "position:relative;">
+	<div class="header menufont" style = "position:relative;">
 <date-widget style = "position:absolute;top:0px;right:0px;"></date-widget>
-<fx-markup class = "header" style="font-weight:bold;" width = 768 height = 80 c = #4D148C textcolor = "white" size = 32 family = "roboto"><div slot = "element-name" style = "text-align:center;padding-top:30px;font-family:roboto;">RADAR Outbound - PDX </div>
+<fx-markup class = "header" style="font-weight:bold;" width = 768 height = 80 c = #4D148C textcolor = "white" size = 32 family = "roboto"><div slot = "element-name" style = "text-align:center;padding-top:30px;font-family:roboto;line-height:.5em;">RADAR Outbound - PDX </div>
 </fx-markup >
 </div>
 
@@ -384,7 +404,7 @@ width = 768
 height = 50 
 orientation = left 
 c = "white";                       
-size = 22
+size = 22 
 class = "menu"
 
 link1 = "preSort.html"
@@ -405,14 +425,24 @@ style="margin-bottom:200px;font-family:roboto;">
 
 	
 	
-	<div class="box content1" style = "position:relative;padding-left:30px;">
-<fx-markup  style="font-weight:bold;" textcolor = #4D148C size = 58 family = "roboto">
-<div slot = "element-name" style = "text-align:left;font-family:roboto;">
-<span style = "font-size:22px;color:black;font-weight:bold;">Volume To Process</span><br />16,423</div>
-</fx-markup> 
+	<div   style = "position:relative;padding-left:30px;margin-top:30px;">
+		<fx-markup  style="font-weight:bold;" textcolor = #4D148C   family = "roboto">
+			<div slot = "element-name" style = "text-align:left;font-family:roboto;">
+				<span class = "mediumfont" style = "font-weight:bold;">Volume To Process</span>
+				<br />
+				<span class = "xlargefont purple">16,423</span>
+			</div>
+		</fx-markup> 
 
 
-<fx-markup  style = "position:absolute;top:0px;left:100%;font-weight:bold;padding-left:120px; " textcolor = #4D148C size = 58 family = "roboto"><div slot = "element-name" style = "text-align:center;font-family:roboto;"><span style = "font-size:22px;color:black;font-weight:bold;">Sort Time Left</span><br />2:55:00<br /><span style = "display:block;font-size:18px;font-style:italic;">(h:mm:ss)</span></div>
+<fx-markup  style = "position:absolute;top:0px;left:500px;font-weight:bold;" textcolor = #4D148C  family = "roboto">
+	<div slot = "element-name" style = "text-align:center;font-family:roboto;">
+		<span  class = "mediumfont" style = "color:black;font-weight:bold;">Sort Time Left</span>
+		<br />
+		<span class = "xlargefont purple">2:55:00</span>
+		<br />
+		<span style = "display:block;font-size:18px;font-style:italic;">(h:mm:ss)</span>
+	</div>
 </fx-markup>
 </div>
 
@@ -432,8 +462,8 @@ style="margin-bottom:200px;font-family:roboto;">
 
 
 
-<div style="width:50%;padding-left:130px;position:absolute;top:0px;left:100%;padding-top:40px;text-align:center;">
-	<span style = "font-size:22px;font-weight:bold;">Pallets Req'd</span>
+<div style="position:absolute;top:0px;left:550px;padding-top:40px;text-align:center;font-family:roboto;">
+	<span class = "mediumfont" style = "font-weight:bold;">Pallets Req'd</span>
 	<br />
 	<select id = "pallets" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:70px;background-color: #f7f7f7;" >
 	<option value = "5">5</option>	 
@@ -453,12 +483,13 @@ style="margin-bottom:200px;font-family:roboto;">
 
 
  
-<div class="box" style = "text-align:center;padding-left:25%;width:50%;">
+<div class = "box"   style = "text-align:center;padding-left:25%;width:50%;font-family:roboto;position:relative;margin-top:30px;">
+<img src = "pencil.PNG"  style = "position:absolute;top:100px;left:550px;" onclick="sss = document.getElementById('myarrivals');sss.style.display = 'block';" id = "myBtn" />
 
-<fx-markup  style="font-weight:bold;" textcolor = #4D148C size = 58 family = "roboto"><div slot = "element-name" style = "padding-top:80px;text-align:left;font-family:roboto;"><span style = "padding-left:50px;font-size:22px;color:black;font-weight:bold;">Last Arriving Flights/Trucks</span></div>
+<fx-markup  style="font-weight:bold;" textcolor = #4D148C size = 58 family = "roboto"><div slot = "element-name" style = "padding-top:80px;text-align:left;font-family:roboto;"><span class = "mediumfont" style = "padding-left:50px;color:black;font-weight:bold;">Last Arriving Flights/Trucks</span></div>
 </fx-markup>
 
-	<table  id="details"  cellspacing="0" width="100%" class="footable table toggle-circle">
+	<table  id="details"  cellspacing="0" width="100%" class="footable table toggle-circle" >
 				<thead>
 				<tr> 
 				<th data-sort-initial="true" data-type="numeric" data-class="expand"  data-toggle="true" style="background-color:white;color:black;">Flight #</th>
@@ -517,7 +548,7 @@ style="margin-bottom:200px;font-family:roboto;">
  
  
  
- <div  class="box flights" style = "padding-left:10px;"><span style="font-size:18px;color:#4D1486;font-weight:bold;">Outbound Flights</span><img src = "pencil.PNG"  style = "padding-left:10px;" onclick="ddd = document.getElementById('myflights');ddd.style.display = 'block';" id = "myBtn" />			
+ <div  class="box flights" style = "padding-left:20px;"><span style="font-size:18px;color:#4D1486;font-weight:bold;">Outbound Flights</span><img src = "pencil.PNG"  style = "padding-left:10px;" onclick="ddd = document.getElementById('myflights');ddd.style.display = 'block';" id = "myBtn" />			
 
 	<table   id="details"  cellspacing="0" width="100%" class="footable table toggle-circle">
 				<thead>
@@ -546,9 +577,9 @@ style="margin-bottom:200px;font-family:roboto;">
 				<td style="border-top:none;color:green;font-size:18px;">ARD READY</td>
 				</tr>
 				<tr >
-				<td  style="border-top:none;" name="id" >743</td>
-				<td style="border-top:none;">608</td>
-				<td style="border-top:none;">132</td>
+				<td  style="border-top:none;" name="id" >721</td>
+				<td style="border-top:none;">858</td>
+				<td style="border-top:none;">383</td>
 				<td style="border-top:none;">17:30</td>
 				<td style="border-top:none;">DC10</td>
 				<td style="border-top:none;">Y</td>
@@ -557,9 +588,9 @@ style="margin-bottom:200px;font-family:roboto;">
 				<td style="border-top:none;color:red;font-size:18px;">IN WORK</td>
 				</tr>
 				<tr >
-				<td  style="border-top:none;" name="id" >743</td>
-				<td style="border-top:none;">608</td>
-				<td style="border-top:none;">132</td>
+				<td  style="border-top:none;" name="id" >760</td>
+				<td style="border-top:none;">614</td>
+				<td style="border-top:none;">301</td>
 				<td style="border-top:none;">17:30</td>
 				<td style="border-top:none;">DC10</td>
 				<td style="border-top:none;">-</td>
@@ -572,10 +603,11 @@ style="margin-bottom:200px;font-family:roboto;">
 
 
 
-<div class="box flight" style = "padding-bottom:10px;">
-<div class = "box flight1" style = "padding-left:10px;">
-<span style = "font-size:18px;font-weight:bold;">Flight</span>
-<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:90px;background-color: #f7f7f7;" >
+<div class="box flight" style = "margin-left:20px;padding-bottom:10px;">
+
+<div class = "box flight1" style = "padding-left: 0px;">
+<span style = "font-size:16px;font-weight:bold;">Flight</span>
+<select id = "cars" is = "fx-select" style = "font-size:18px;height:40px;border:solid 1px Gainsboro;width:65px;background-color: #f7f7f7;" >
 <option value = "747">747</option>
 <option value = "747">747</option>
 <option value = "747">747</option>
@@ -586,56 +618,56 @@ style="margin-bottom:200px;font-family:roboto;">
 </div>
 
 <div class = "box flight2">
-<span style = "font-size:18px;font-weight:bold;">AYY</span><br />
-<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:75px;background-color: #f7f7f7;" >
+<span style = "font-size:16px;font-weight:bold;">AYY</span><br />
+<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:65px;background-color: #f7f7f7;" >
 <option value = "0">0</option>	 
 </select>
 </div>
 
 <div class = "box flight3">
-<span style = "font-size:18px;font-weight:bold;">SAA</span><br />
-<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:75px;background-color: #f7f7f7;" >
+<span style = "font-size:16px;font-weight:bold;">SAA</span><br />
+<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:65px;background-color: #f7f7f7;" >
 <option value = "1">1</option>	 
 </select>
 </div>
 
 <div class = "box flight4">
-<span style = "font-size:18px;font-weight:bold;">AAD</span><br />
-<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:75px;background-color: #f7f7f7;" >
+<span style = "font-size:16px;font-weight:bold;">AAD</span><br />
+<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:65px;background-color: #f7f7f7;" >
 <option value = "2">2</option>	 
 </select>
 </div>
 
 <div class = "box flight5">
-<span style = "font-size:18px;font-weight:bold;">AMJ</span><br />
-<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:75px;background-color: #f7f7f7;" >
+<span style = "font-size:16px;font-weight:bold;">AMJ</span><br />
+<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:65px;background-color: #f7f7f7;" >
 <option value = "0">0</option>	 
 </select>
 </div>
 
 <div class = "box flight6">
-<span style = "font-size:18px;font-weight:bold;">AKE</span><br />
-<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:75px;background-color: #f7f7f7;" >
+<span style = "font-size:16px;font-weight:bold;">AKE</span><br />
+<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:65px;background-color: #f7f7f7;" >
 <option value = "0">0</option>	 
 </select>
 </div>
 
 <div class = "box flight7">
-<span style = "font-size:18px;font-weight:bold;">APE</span><br />
-<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:75px;background-color: #f7f7f7;" >
+<span style = "font-size:16px;font-weight:bold;">APE</span><br />
+<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:65px;background-color: #f7f7f7;" >
 <option value = "5">5</option>	 
 </select>
 </div>
 
 <div class = "box flight8">
-<span style = "font-size:18px;font-weight:bold;">AQF</span><br />
-<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:75px;background-color: #f7f7f7;" >
+<span style = "font-size:16px;font-weight:bold;">AQF</span><br />
+<select id = "cars" is = "fx-select" style = "font-size:22px;height:40px;border:solid 1px Gainsboro;width:65px;background-color: #f7f7f7;" >
 <option value = "0">0</option>	 
 </select>
 </div>
 
 <div class = "box flight9" style = "margin-top:30px;">
-<fx-button    c = #4D148C rad = 10 width = 75 height = 60 textcolor =  white    family = roboto cur = "pointer"><div style = "margin-top:10px;color:white;text-align:left;padding:5px;font-size:8px;" slot = "buttonpos">Request Cans</div></fx-button>	 
+<fx-button    c = #4D148C rad = 0 width = 140 height = 40 textcolor =  white    family = roboto cur = "pointer"><div style = "margin-top:-6px;color:white;text-align:left;padding:5px;font-size:8px;" slot = "buttonpos">Request Cans</div></fx-button>	 
  
 </div>
 

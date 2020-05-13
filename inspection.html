@@ -142,23 +142,18 @@ startTime()
 	<div class="header xlargefont">
 		<fx-markup class = "header" style="font-weight:bold;" width = 768 height = 80 c = #4D148C textcolor = "white"  family = "roboto"><div slot = "element-name" style = "text-align:center;padding-top:20px;font-family:roboto;">RADAR Outbound - PDX </div>
 		</fx-markup>
-		<date-widget style = "position:absolute;top:10px;right:0px;"></date-widget>
+		<!--<date-widget style = "position:absolute;top:10px;right:0px;"></date-widget>-->
+		<span style = "position:absolute;right:20px;top:15px;color: white;font-family:roboto;font-size:16px;">11:33:29</span>
+		<span style = "position:absolute;right:20px;top:35px;color: white;font-family:roboto;font-size:16px;">GMT 16:33:29</span>
+		<span style = "position:absolute;right:45px;top:55px;color: white;font-family:roboto;font-size:16px;">SORT 14:45</span>
 	</div>
 
-<div class="menu">
+ 
 
-<fx-dropdownmenu 
-width = 768 
- 
-orientation = left 
-c = "white";                       
-size = 22
- 
- 
+<fx-dropdownmenu width = 768 orientation = left c = "white" size = 22 style = "border-bottom: solid 3px silver;"
 link1 = "preSort.html"
 link2 = ""
-link3 = "sort.html"
-style="font-family:roboto;">
+link3 = "sort.html">
 <a slot = "drop-text1" style = "color:#4D148C;font-weight:bold;margin-left:100px;text-decoration:none;" href = "presort.html" >PRE-SORT</a>
 
 <a slot = "drop-text2" href = "sort.html" style = "color:#4D148C;font-weight:bold;margin-left:60px;color:silver;text-decoration:none;" href = "sort.html">SORT</a>
@@ -166,13 +161,13 @@ style="font-family:roboto;">
 <a slot = "drop-text3" style = "color:#4D148C;font-weight:bold;margin-left:60px;color:silver;text-decoration:none;" href = "live.html">LIVE VIEWS</a>
 
 <a slot = "drop-text4" style = "color:#4D148C;font-weight:bold;margin-left:60px;color:silver;text-decoration:none;" href = "notes.html">MY NOTES</a>
-</fx-dropdownmenu></div>
+</fx-dropdownmenu> 
 
 <!--<div class="box content1"><radar-scales></radar-scales></div>-->
 
  
 
-<div style = "position:relative;margin-left:40px;margin-right:10px;margin-top:30px;" > 
+<div style = "position:relative;margin-left:40px;margin-right:10px;margin-top:20px;" > 
 	<span style="font-size:38px;color:#4D1486;font-weight:bold;margin-left:130px;">Daily Schedule Inspection</span><br /><br />
 	
 	<!--<img src = "pencil.png" style = "height:25px;" onclick="ddd = document.getElementById('myflights');ddd.style.display = 'block';" id = "myBtn" style = "padding-left:10px;"  />-->

@@ -89,7 +89,7 @@ myObj = [
  ];
 
 var txt = "";
-txt +=  "<div style='padding-top:29px;background-color:#4D148C;width:100%;height:60px;color:white;font-family:roboto;font-size:38px;font-weight:bold;text-align:center;'>Flights Shown</div><table   style='font-family:roboto;width:100%;text-align:center;margin-top:30px;'><tr><th>Show</th><th>Flight #</th><th>Market</th><th>Tail #</th><th>Gate #</th><th>Departure</th></tr>"
+txt +=  "<div style='padding-top:20px;background-color:#4D148C;width:100%;height:60px;color:white;font-family:roboto;font-size:38px;font-weight:bold;text-align:center;'>Flights Shown</div><table   style='font-family:roboto;width:100%;text-align:center;margin-top:30px;'><tr><th>Show</th><th>Flight #</th><th>Market</th><th>Tail #</th><th>Gate #</th><th>Departure</th></tr>"
 	
 	 for (x in myObj) {
        txt += "<tr>" + "<td>" + myObj[x].show + "</td>" + "<td>" + myObj[x].flight + "</td>" + "<td>" + myObj[x].market + "</td>" + "<td>" + myObj[x].tail + "</td>" + "<td>" + myObj[x].gate + "</td>" + "<td>" + myObj[x].depart + "</td>" + "</tr>";
